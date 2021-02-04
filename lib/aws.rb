@@ -1,6 +1,7 @@
 module Aws
 
   require 'time'
+  require 'config/secrets.yml'
 
   # Initialiaze access to DynamoDB
   def self.init
@@ -33,12 +34,19 @@ module Aws
 
     resp = @client.put_item({
                                 item: {
-                                    "user_id" => params['user_id'].to_i,
-                                    "age" => params['age'],
-                                    "created_at" => Time.now.utc.iso8601,
+                                    "uuid" => ,
+                                    "country" => params['country'],
+                                    "state" => params['state'],
+                                    "city" => params['city'],
+                                    "landmark" => params['landmark'],
+                                    "latitude"=> params['latitude'],
+                                    "longitude"=> params['longitude'],
+                                    "perspective" => params['perspective'],
+                                    "user-id" => params['user-id'],
+                                    "photo-url" =>
                                 },
                                 return_consumed_capacity: "TOTAL",
-                                table_name: "my_table1",
+                                table_name: "locationsInfo",
                             })
 
   end
